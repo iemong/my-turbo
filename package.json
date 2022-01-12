@@ -1,0 +1,36 @@
+{
+  "name": "my-turbo",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "iemong",
+  "license": "MIT",
+  "devDependencies": {
+    "turbo": "^1.0.25"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "private": true,
+  "turbo": {
+    "baseBranch": "origin/main",
+    "pipeline": {
+      "build": {
+        "dependsOn": ["^build"],
+        "outputs": [".next/**", ".nuxt/**", ".output"]
+      },
+      "test": {
+        "dependsOn": ["^build"],
+        "outputs": []
+      },
+      "lint": {
+        "outputs": []
+      },
+      "dev": {
+        "cache": false
+      }
+    }
+  }
+}
